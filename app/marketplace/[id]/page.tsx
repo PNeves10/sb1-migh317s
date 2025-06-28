@@ -22,16 +22,7 @@ import { Footer } from "@/components/layout/footer"
 import { useAuth } from "@/contexts/auth-context"
 import { toast } from "sonner"
 import { motion, AnimatePresence } from "framer-motion"
-import {
-  Heart, Share2, MessageCircle, TrendingUp, Users, Calendar, Globe, Star, Shield, Eye, BarChart3, 
-  DollarSign, ArrowLeft, Download, Bookmark, Flag, ExternalLink, Copy, Phone, Video, Mail,
-  ChevronLeft, ChevronRight, ZoomIn, Play, Pause, Volume2, VolumeX, FullScreen,
-  AlertTriangle, CheckCircle, Info, HelpCircle, Calculator, FileText, PieChart,
-  Clock, MapPin, Building, Code, Smartphone, ShoppingCart, Briefcase, Database,
-  Cloud, Lock, Wifi, CreditCard, Zap, Target, Award, TrendingDown, Activity,
-  Gauge, Sparkles, ThumbsUp, ThumbsDown, MessageSquare, Send, Plus, Minus,
-  Filter, Search, SortAsc, MoreHorizontal, X, Check, Edit, Save, RefreshCw
-} from "lucide-react"
+import { Heart, Share2, MessageCircle, TrendingUp, Users, Calendar, Globe, Star, Shield, Eye, BarChart3, DollarSign, ArrowLeft, Download, Bookmark, Flag, ExternalLink, Copy, Phone, Video, Mail, ChevronLeft, ChevronRight, ZoomIn, Play, Pause, Volume2, VolumeX, Fullscreen as FullScreen, AlertTriangle, CheckCircle, Info, HelpCircle, Calculator, FileText, PieChart, Clock, MapPin, Building, Code, Smartphone, ShoppingCart, Briefcase, Database, Cloud, Lock, Wifi, CreditCard, Zap, Target, Award, TrendingDown, Activity, Gauge, Sparkles, ThumbsUp, ThumbsDown, MessageSquare, Send, Plus, Minus, Filter, Search, SortAsc, MoreHorizontal, X, Check, Edit, Save, RefreshCw } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts'
