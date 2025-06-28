@@ -87,11 +87,11 @@ export function Header() {
                 </NavigationMenuList>
               </NavigationMenu>
               
+              <Link href="/marketplace" className="text-sm font-medium hover:text-blue-600 transition-colors">
+                Marketplace
+              </Link>
               <Link href="/how-to-use" className="text-sm font-medium hover:text-blue-600 transition-colors">
                 How to use
-              </Link>
-              <Link href="/valuation" className="text-sm font-medium hover:text-blue-600 transition-colors">
-                Valuation
               </Link>
               <Link href="/blog" className="text-sm font-medium hover:text-blue-600 transition-colors">
                 Resources
