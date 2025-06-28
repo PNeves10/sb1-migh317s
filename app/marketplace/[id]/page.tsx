@@ -27,6 +27,19 @@ import Link from "next/link"
 import Image from "next/image"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts'
 
+// Generate static params for static export
+export async function generateStaticParams() {
+  // In a real application, this would fetch all available asset IDs from your database/API
+  // For now, we'll return a few sample IDs to demonstrate the functionality
+  return [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+    { id: '4' },
+    { id: '5' },
+  ]
+}
+
 interface AssetDetail {
   id: string
   title: string
