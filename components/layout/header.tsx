@@ -102,8 +102,8 @@ export function Header() {
               <Link href="/marketplace" className="text-sm font-medium hover:text-blue-600 transition-colors">
                 Marketplace
               </Link>
-              <Link href="/valuation" className="text-sm font-medium hover:text-blue-600 transition-colors">
-                AI Valuation
+              <Link href="/how-to-use" className="text-sm font-medium hover:text-blue-600 transition-colors">
+                How to use
               </Link>
               <Link href="/blog" className="text-sm font-medium hover:text-blue-600 transition-colors">
                 Resources
