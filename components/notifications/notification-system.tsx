@@ -225,9 +225,7 @@ export function NotificationSystem({ isOpen, onClose }: NotificationSystemProps)
         audioRef.current.play().catch(() => {}) // Ignore autoplay restrictions
       }
     } catch (error) {
-      toast("Erro", {
-        description: "Erro ao carregar notificações"
-      })
+      toast.error("Failed to load notifications")
     } finally {
       setIsLoading(false)
     }
@@ -241,22 +239,16 @@ export function NotificationSystem({ isOpen, onClose }: NotificationSystemProps)
         ),
       )
     } catch (error) {
-      toast("Erro", {
-        description: "Erro ao marcar notificação como lida"
-      })
+      toast.error("Failed to mark notification as read")
     }
   }
 
   const markAllAsRead = async () => {
     try {
       setNotifications(notifications.map((notification) => ({ ...notification, read: true })))
-      toast("Sucesso", {
-        description: "Todas as notificações foram marcadas como lidas"
-      })
+      toast.success("All notifications marked as read")
     } catch (error) {
-      toast("Erro", {
-        description: "Erro ao marcar todas as notificações como lidas"
-      })
+      toast.error("Failed to mark all notifications as read")
     }
   }
 
@@ -269,15 +261,10 @@ export function NotificationSystem({ isOpen, onClose }: NotificationSystemProps)
             : notification,
         ),
       )
-      
       const notification = notifications.find(n => n.id === notificationId)
-      toast("Sucesso", {
-        description: `Notificação ${notification?.pinned ? 'removida dos' : 'adicionada aos'} fixados`
-      })
+      toast.success(`Notification ${notification?.pinned ? 'unpinned' : 'pinned'}`)
     } catch (error) {
-      toast("Erro", {
-        description: "Erro ao fixar notificação"
-      })
+      toast.error("Failed to pin notification")
     }
   }
 
@@ -290,27 +277,18 @@ export function NotificationSystem({ isOpen, onClose }: NotificationSystemProps)
             : notification,
         ),
       )
-      
-      toast("Sucesso", {
-        description: "Notificação arquivada"
-      })
+      toast.success("Notification archived")
     } catch (error) {
-      toast("Erro", {
-        description: "Erro ao arquivar notificação"
-      })
+      toast.error("Failed to archive notification")
     }
   }
 
   const deleteNotification = async (notificationId: string) => {
     try {
       setNotifications(notifications.filter((notification) => notification.id !== notificationId))
-      toast("Sucesso", {
-        description: "Notificação removida"
-      })
+      toast.success("Notification removed")
     } catch (error) {
-      toast("Erro", {
-        description: "Erro ao remover notificação"
-      })
+      toast.error("Failed to remove notification")
     }
   }
 
@@ -337,15 +315,10 @@ export function NotificationSystem({ isOpen, onClose }: NotificationSystemProps)
           notifications.filter((notification) => !selectedNotifications.includes(notification.id))
         )
       }
-      
       setSelectedNotifications([])
-      toast("Sucesso", {
-        description: `${selectedNotifications.length} notificações processadas`
-      })
+      toast.success(`${selectedNotifications.length} notifications processed`)
     } catch (error) {
-      toast("Erro", {
-        description: "Erro ao processar notificações"
-      })
+      toast.error("Failed to process notifications")
     }
   }
 

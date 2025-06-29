@@ -38,12 +38,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     { name: 'Utilizadores', href: '/admin/users', icon: Users },
     { name: 'Ativos', href: '/admin/assets', icon: TrendingUp },
     { name: 'Transações', href: '/admin/transactions', icon: DollarSign },
-    { name: 'Análise', href: '/admin/analytics', icon: BarChart3 },
+    { name: 'Análises', href: '/admin/analytics', icon: BarChart3 },
     { name: 'Deteção de Fraude', href: '/admin/fraud', icon: Shield },
     { name: 'Definições', href: '/admin/settings', icon: Settings },
   ] : [
     { name: 'Painel', href: '/dashboard', icon: Home },
-    { name: 'Marketplace', href: '/marketplace', icon: Search },
+    { name: 'Mercado', href: '/marketplace', icon: Search },
     { name: 'Meus Ativos', href: '/dashboard/assets', icon: TrendingUp },
     { name: 'Favoritos', href: '/dashboard/favorites', icon: Bookmark },
     { name: 'Mensagens', href: '/messages', icon: MessageSquare },
@@ -81,7 +81,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
         <div className="flex items-center justify-between">
           <Badge variant={user?.verified ? 'default' : 'secondary'} className="text-xs">
-            {user?.verified ? 'Verificado' : 'Não Verificado'}
+            {user?.verified ? 'Verificado' : 'Não verificado'}
           </Badge>
           {user?.rating && (
             <div className="flex items-center space-x-1">

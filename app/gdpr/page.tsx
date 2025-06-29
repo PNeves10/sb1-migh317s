@@ -218,7 +218,7 @@ export default function GDPRPage() {
                       privacy@aiquira.com
                     </a>
                   </Button>
-                  <Button asChild variant="outline" className="border-white/30 text-blue-500 hover:bg-white/10">
+                  <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10">
                     <Link href="/privacy">
                       <FileText className="w-5 h-5 mr-2" />
                       Política de Privacidade
@@ -475,11 +475,11 @@ export default function GDPRPage() {
                       dpo@aiquira.com
                     </a>
                     <a 
-                      href="tel:+3519000000000"
+                      href="tel:+351210000000"
                       className="inline-flex items-center justify-center px-6 py-3 border border-slate-600 text-slate-300 rounded-lg font-medium hover:bg-slate-800 transition-colors"
                     >
                       <Phone className="w-5 h-5 mr-2" />
-                      +351 900 000 000
+                      +351 21 000 0000
                     </a>
                   </div>
                   

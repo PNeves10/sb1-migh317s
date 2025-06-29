@@ -364,9 +364,14 @@ export default function MarketplacePage() {
     )
     
     const isFavorited = favorites.includes(assetId)
-    toast(isFavorited ? "Removido dos favoritos" : "Adicionado aos favoritos", {
-      description: isFavorited ? "O ativo foi removido da sua lista de favoritos" : "O ativo foi adicionado à sua lista de favoritos",
-    })
+    toast(
+      isFavorited ? "Removido dos favoritos" : "Adicionado aos favoritos",
+      {
+        description: isFavorited
+          ? "O ativo foi removido da sua lista de favoritos"
+          : "O ativo foi adicionado à sua lista de favoritos",
+      }
+    )
   }
 
   const getTypeIcon = (type: string) => {

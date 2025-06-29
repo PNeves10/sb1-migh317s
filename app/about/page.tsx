@@ -439,7 +439,7 @@ export default function AboutPage() {
                       Contactar Equipa
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+                  <Button asChild variant="outline" size="lg" className="border-white/30 text-blue-500 hover:bg-white/10">
                     <Link href="/careers">
                       Carreiras
                       <ArrowRight className="w-5 h-5 ml-2" />

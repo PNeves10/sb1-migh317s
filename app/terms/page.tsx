@@ -409,11 +409,11 @@ export default function TermsPage() {
                     legal@aiquira.com
                   </a>
                   <a 
-                    href="tel:+351 900 000 000"
+                    href="tel:+351210000000"
                     className="inline-flex items-center justify-center px-6 py-3 border border-white/30 text-white rounded-lg font-medium hover:bg-white/10 transition-colors"
                   >
                     <Phone className="w-5 h-5 mr-2" />
-                    +351 900 000 000
+                    +351 21 000 0000
                   </a>
                 </div>
               </CardContent>

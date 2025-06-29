@@ -11,23 +11,23 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'AIQuira - Plataforma Digital de M&A',
-  description: 'A principal plataforma para fusões e aquisições digitais. Compre, venda e avalie ativos digitais com insights potenciados por IA.',
-  keywords: 'M&A digital, fusões aquisições, ativos digitais, avaliação de websites, corretor de negócios',
-  authors: [{ name: 'Equipa AIQuira' }],
-  creator: 'Plataforma AIQuira',
+  title: 'AIQuira - Digital M&A Platform',
+  description: 'The leading platform for digital mergers and acquisitions. Buy, sell, and value digital assets with AI-powered insights.',
+  keywords: 'digital M&A, mergers acquisitions, digital assets, website valuation, business broker',
+  authors: [{ name: 'AIQuira Team' }],
+  creator: 'AIQuira Platform',
   openGraph: {
     type: 'website',
-    locale: 'pt_PT',
+    locale: 'en_US',
     url: 'https://aiquira.com',
-    title: 'AIQuira - Plataforma Digital de M&A',
-    description: 'A principal plataforma para fusões e aquisições digitais.',
+    title: 'AIQuira - Digital M&A Platform',
+    description: 'The leading platform for digital mergers and acquisitions.',
     siteName: 'AIQuira',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AIQuira - Plataforma Digital de M&A',
-    description: 'A principal plataforma para fusões e aquisições digitais.',
+    title: 'AIQuira - Digital M&A Platform',
+    description: 'The leading platform for digital mergers and acquisitions.',
     creator: '@aiquira',
   },
   robots: {
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased`}>
         <Providers>
           {children}

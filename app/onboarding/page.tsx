@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -75,7 +75,9 @@ export default function OnboardingPage() {
 	};
 
 	const handleFinish = () => {
-		toast.success('Bem-vindo à AIQuira! O seu onboarding está concluído. Vamos explorar o seu painel.');
+		toast('Bem-vindo à AIQuira! O seu onboarding está concluído. Vamos explorar o seu painel.', {
+			description: undefined,
+		});
 		router.push('/dashboard');
 	};
 
@@ -123,6 +125,7 @@ export default function OnboardingPage() {
 								className={`cursor-pointer transition-all duration-200 ${
 									selectedRole === 'buyer' ? 'ring-2 ring-blue-600 bg-blue-50' : 'hover:shadow-lg'
 								}`}
+
 								onClick={() => setSelectedRole('buyer')}
 							>
 								<CardHeader className="text-center">
@@ -143,6 +146,7 @@ export default function OnboardingPage() {
 								className={`cursor-pointer transition-all duration-200 ${
 									selectedRole === 'seller' ? 'ring-2 ring-green-600 bg-green-50' : 'hover:shadow-lg'
 								}`}
+
 								onClick={() => setSelectedRole('seller')}
 							>
 								<CardHeader className="text-center">

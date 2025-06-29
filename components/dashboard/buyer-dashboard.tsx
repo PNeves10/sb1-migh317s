@@ -192,8 +192,8 @@ export function BuyerDashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-600">Intervalo Orçamental</p>
-                <p className="text-2xl font-bold text-slate-900">€50K-150K</p>
+                <p className="text-sm font-medium text-slate-600">Intervalo de Orçamento</p>
+                <p className="text-2xl font-bold text-slate-900">50K€-150K€</p>
                 <p className="text-xs text-purple-600 flex items-center mt-1">
                   <Target className="h-3 w-3 mr-1" />
                   Foco em SaaS
@@ -209,7 +209,7 @@ export function BuyerDashboard() {
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
         <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="overview">Visão Geral</TabsTrigger>
+          <TabsTrigger value="overview">Resumo</TabsTrigger>
           <TabsTrigger value="recommendations">Recomendações IA</TabsTrigger>
           <TabsTrigger value="watchlist">Favoritos</TabsTrigger>
           <TabsTrigger value="activity">Atividade</TabsTrigger>
@@ -225,7 +225,7 @@ export function BuyerDashboard() {
                   Recomendações IA
                 </CardTitle>
                 <CardDescription>
-                  Ativos sugeridos para o seu perfil
+                  Ativos correspondentes às suas preferências
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -241,9 +241,9 @@ export function BuyerDashboard() {
                       <p className="text-sm text-slate-600">{asset.category}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-semibold text-slate-900">€{asset.price.toLocaleString()}</p>
+                      <p className="font-semibold text-slate-900">{asset.price.toLocaleString('pt-PT', { style: 'currency', currency: 'EUR' })}</p>
                       <Badge variant="secondary" className="text-xs">
-                        Score: {asset.score}/10
+                        Pontuação: {asset.score}/10
                       </Badge>
                     </div>
                   </div>
@@ -277,7 +277,7 @@ export function BuyerDashboard() {
                       <p className="text-xs text-slate-500">{activity.time}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-medium text-slate-900">{activity.value.replace('$', '€')}</p>
+                      <p className="text-sm font-medium text-slate-900">{activity.value}</p>
                     </div>
                   </div>
                 ))}
@@ -307,10 +307,10 @@ export function BuyerDashboard() {
                   <p className="text-xs text-slate-500 mt-1">85% dos compradores interessados</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-emerald-600 mb-2">€89K</div>
-                  <p className="text-sm text-slate-600 mb-2">Valor Médio dos Negócios</p>
+                  <div className="text-3xl font-bold text-emerald-600 mb-2">89K€</div>
+                  <p className="text-sm text-slate-600 mb-2">Tamanho Médio do Negócio</p>
                   <Progress value={65} className="h-2" />
-                  <p className="text-xs text-slate-500 mt-1">+12% face ao mês anterior</p>
+                  <p className="text-xs text-slate-500 mt-1">+12% em relação ao mês passado</p>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-amber-600 mb-2">18 dias</div>
@@ -340,21 +340,21 @@ export function BuyerDashboard() {
                     className="absolute top-3 right-3"
                     variant={asset.score >= 9 ? 'default' : asset.score >= 7 ? 'secondary' : 'outline'}
                   >
-                    Score: {asset.score}/10
+                    Pontuação: {asset.score}/10
                   </Badge>
                 </div>
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <h3 className="font-semibold text-lg text-slate-900 mb-2">{asset.title}</h3>
                     <div className="flex items-center justify-between text-sm text-slate-600">
-                      <span>€{asset.revenue.toLocaleString()}/mês receita</span>
-                      <span>{(asset.traffic / 1000).toFixed(0)}K visitantes/mês</span>
+                      <span>{asset.revenue.toLocaleString('pt-PT', { style: 'currency', currency: 'EUR' })}/mês receita</span>
+                      <span>{(asset.traffic / 1000).toFixed(0)}K visitantes mensais</span>
                     </div>
                   </div>
                   
                   <div className="flex items-center justify-between mb-4">
                     <div className="text-2xl font-bold text-slate-900">
-                      €{asset.price.toLocaleString()}
+                      {asset.price.toLocaleString('pt-PT', { style: 'currency', currency: 'EUR' })}
                     </div>
                     <div className="flex items-center text-emerald-600">
                       <TrendingUp className="h-4 w-4 mr-1" />
@@ -395,9 +395,9 @@ export function BuyerDashboard() {
         <TabsContent value="watchlist" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Favoritos</CardTitle>
+              <CardTitle>Os Seus Favoritos</CardTitle>
               <CardDescription>
-                Ativos que está a acompanhar e respetivo estado
+                Ativos que está a acompanhar e o seu estado
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -408,7 +408,7 @@ export function BuyerDashboard() {
                       <h4 className="font-medium text-slate-900">{item.name}</h4>
                       <div className="flex items-center space-x-4 mt-1">
                         <span className="text-lg font-semibold text-slate-900">
-                          €{item.price.toLocaleString()}
+                          {item.price.toLocaleString('pt-PT', { style: 'currency', currency: 'EUR' })}
                         </span>
                         <span className={`text-sm flex items-center ${
                           item.change > 0 ? 'text-emerald-600' : 'text-red-600'
@@ -423,7 +423,7 @@ export function BuyerDashboard() {
                         item.status === 'active' ? 'secondary' :
                         item.status === 'negotiating' ? 'default' : 'outline'
                       }>
-                        {item.status === 'active' ? 'Ativo' : item.status === 'negotiating' ? 'Em Negociação' : 'Due Diligence'}
+                        {item.status.replace('_', ' ')}
                       </Badge>
                       <Button size="sm">
                         Ver
@@ -451,16 +451,16 @@ export function BuyerDashboard() {
                   {
                     id: '4',
                     type: 'inquiry',
-                    asset: 'Newsletter Platform',
-                    value: '€92,000',
+                    asset: 'Plataforma de Newsletter',
+                    value: '92.000€',
                     time: 'há 2 dias',
                     icon: MessageSquare,
                   },
                   {
                     id: '5',
                     type: 'valuation',
-                    asset: 'Avaliação Próprio Ativo',
-                    value: '€156,000',
+                    asset: 'Avaliação do Próprio Ativo',
+                    value: '156.000€',
                     time: 'há 3 dias',
                     icon: DollarSign,
                   },
@@ -473,17 +473,17 @@ export function BuyerDashboard() {
                       <p className="text-sm font-medium text-slate-900">
                         {activity.asset}
                       </p>
-                      <p className="text-xs text-slate-500">{activity.time.replace('ago', 'atrás')}</p>
+                      <p className="text-xs text-slate-500">{activity.time}</p>
                       <p className="text-sm text-slate-600 mt-1">
                         {activity.type === 'view' && 'Visualizou detalhes do ativo'}
                         {activity.type === 'favorite' && 'Adicionado aos favoritos'}
                         {activity.type === 'message' && 'Enviou mensagem ao vendedor'}
-                        {activity.type === 'inquiry' && 'Pediu mais informações'}
-                        {activity.type === 'valuation' && 'Gerou avaliação por IA'}
+                        {activity.type === 'inquiry' && 'Solicitou mais informações'}
+                        {activity.type === 'valuation' && 'Gerou avaliação IA'}
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-medium text-slate-900">{activity.value.replace('$', '€')}</p>
+                      <p className="text-sm font-medium text-slate-900">{activity.value}</p>
                     </div>
                   </div>
                 ))}

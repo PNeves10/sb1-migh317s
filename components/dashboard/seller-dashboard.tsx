@@ -115,11 +115,11 @@ export function SellerDashboard() {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
+      {/* Cabeçalho */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-slate-900">
-            Painel do Vendedor 📈
+            Painel de Vendedor 📈
           </h1>
           <p className="text-slate-600 mt-1">
             Gere os seus ativos digitais e acompanhe o desempenho
@@ -141,7 +141,7 @@ export function SellerDashboard() {
         </div>
       </div>
 
-      {/* Stats Overview */}
+      {/* Estatísticas Gerais */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card>
           <CardContent className="p-6">
@@ -218,7 +218,7 @@ export function SellerDashboard() {
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
         <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="overview">Visão Geral</TabsTrigger>
+          <TabsTrigger value="overview">Resumo</TabsTrigger>
           <TabsTrigger value="assets">Meus Ativos</TabsTrigger>
           <TabsTrigger value="analytics">Análise</TabsTrigger>
           <TabsTrigger value="inquiries">Contactos</TabsTrigger>
@@ -226,7 +226,7 @@ export function SellerDashboard() {
 
         <TabsContent value="overview" className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Performance Chart */}
+            {/* Gráfico de Desempenho */}
             <Card>
               <CardHeader>
                 <CardTitle>Resumo de Desempenho</CardTitle>
@@ -248,7 +248,7 @@ export function SellerDashboard() {
               </CardContent>
             </Card>
 
-            {/* Recent Inquiries Preview */}
+            {/* Pré-visualização de Contactos Recentes */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
@@ -271,12 +271,12 @@ export function SellerDashboard() {
                       <div className="flex items-center justify-between mb-1">
                         <p className="text-sm font-medium text-slate-900">{inquiry.buyer}</p>
                         <Badge variant={inquiry.status === 'new' ? 'default' : 'secondary'} className="text-xs">
-                          {inquiry.status === 'new' ? 'Novo' : 'Respondido'}
+                          {inquiry.status === 'new' ? 'novo' : inquiry.status === 'replied' ? 'respondido' : 'pendente'}
                         </Badge>
                       </div>
                       <p className="text-xs text-slate-600 mb-1">{inquiry.asset}</p>
                       <p className="text-sm text-slate-700 line-clamp-2">{inquiry.message}</p>
-                      <p className="text-xs text-slate-500 mt-1">{inquiry.time.replace('ago', 'atrás')}</p>
+                      <p className="text-xs text-slate-500 mt-1">{inquiry.time}</p>
                     </div>
                   </div>
                 ))}
@@ -289,19 +289,19 @@ export function SellerDashboard() {
             </Card>
           </div>
 
-          {/* Asset Performance */}
+          {/* Desempenho dos Ativos */}
           <Card>
             <CardHeader>
               <CardTitle>Desempenho dos Ativos</CardTitle>
               <CardDescription>
-                Como estão a performar as suas listagens
+                Como estão a correr as suas listagens
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-blue-600 mb-2">8.2/10</div>
-                  <p className="text-sm text-slate-600 mb-2">Pontuação IA Média</p>
+                  <p className="text-sm text-slate-600 mb-2">Média IA</p>
                   <Progress value={82} className="h-2" />
                   <p className="text-xs text-slate-500 mt-1">Acima da média do mercado</p>
                 </div>
@@ -339,10 +339,10 @@ export function SellerDashboard() {
                       asset.status === 'pending' ? 'secondary' : 'outline'
                     }
                   >
-                    {asset.status === 'active' ? 'Ativo' : asset.status === 'pending' ? 'Pendente' : 'Vendido'}
+                    {asset.status === 'active' ? 'ativo' : asset.status === 'pending' ? 'pendente' : 'vendido'}
                   </Badge>
                   <Badge className="absolute top-3 right-3 bg-white/90 text-slate-900">
-                    Score: {asset.score}/10
+                    Pontuação: {asset.score}/10
                   </Badge>
                 </div>
                 <CardContent className="p-6">
@@ -391,7 +391,7 @@ export function SellerDashboard() {
 
         <TabsContent value="analytics" className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Views Chart */}
+            {/* Gráfico de Visualizações */}
             <Card>
               <CardHeader>
                 <CardTitle>Análise de Visualizações</CardTitle>
@@ -412,7 +412,7 @@ export function SellerDashboard() {
               </CardContent>
             </Card>
 
-            {/* Category Performance */}
+            {/* Desempenho por Categoria */}
             <Card>
               <CardHeader>
                 <CardTitle>Desempenho por Categoria</CardTitle>
@@ -442,7 +442,7 @@ export function SellerDashboard() {
             </Card>
           </div>
 
-          {/* Detailed Metrics */}
+          {/* Métricas Detalhadas */}
           <Card>
             <CardHeader>
               <CardTitle>Métricas Detalhadas</CardTitle>
@@ -455,7 +455,7 @@ export function SellerDashboard() {
                 <div className="text-center p-4 bg-slate-50 rounded-lg">
                   <div className="text-2xl font-bold text-slate-900 mb-1">3.2%</div>
                   <div className="text-sm text-slate-600">Taxa de Conversão</div>
-                  <div className="text-xs text-emerald-600 mt-1">+0.8% vs mês anterior</div>
+                  <div className="text-xs text-emerald-600 mt-1">+0.8% vs mês passado</div>
                 </div>
                 <div className="text-center p-4 bg-slate-50 rounded-lg">
                   <div className="text-2xl font-bold text-slate-900 mb-1">€89K</div>
@@ -464,7 +464,7 @@ export function SellerDashboard() {
                 </div>
                 <div className="text-center p-4 bg-slate-50 rounded-lg">
                   <div className="text-2xl font-bold text-slate-900 mb-1">18</div>
-                  <div className="text-sm text-slate-600">Dias até ao 1º Contacto</div>
+                  <div className="text-sm text-slate-600">Dias até ao Primeiro Contacto</div>
                   <div className="text-xs text-amber-600 mt-1">Setor: 24 dias</div>
                 </div>
                 <div className="text-center p-4 bg-slate-50 rounded-lg">
@@ -482,7 +482,7 @@ export function SellerDashboard() {
             <CardHeader>
               <CardTitle>Todos os Contactos</CardTitle>
               <CardDescription>
-                Gerir contactos e comunicações de compradores
+                Gere contactos e comunicações com compradores
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -501,7 +501,7 @@ export function SellerDashboard() {
                     id: '5',
                     buyer: 'Michael Brown',
                     asset: 'TaskFlow SaaS',
-                    message: 'Qual é a taxa de churn de clientes e métricas de retenção?',
+                    message: 'Qual é a taxa de churn e retenção de clientes?',
                     time: 'há 3 dias',
                     avatar: 'https://images.pexels.com/photos/2897883/pexels-photo-2897883.jpeg?auto=compress&cs=tinysrgb&w=50',
                     status: 'pending'
@@ -524,9 +524,9 @@ export function SellerDashboard() {
                             inquiry.status === 'new' ? 'default' :
                             inquiry.status === 'replied' ? 'secondary' : 'outline'
                           }>
-                            {inquiry.status === 'new' ? 'Novo' : inquiry.status === 'replied' ? 'Respondido' : 'Pendente'}
+                            {inquiry.status === 'new' ? 'novo' : inquiry.status === 'replied' ? 'respondido' : 'pendente'}
                           </Badge>
-                          <span className="text-xs text-slate-500">{inquiry.time.replace('ago', 'atrás')}</span>
+                          <span className="text-xs text-slate-500">{inquiry.time}</span>
                         </div>
                       </div>
                       <p className="text-slate-700 mb-3">{inquiry.message}</p>

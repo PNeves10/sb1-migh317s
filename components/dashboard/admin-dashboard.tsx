@@ -31,7 +31,7 @@ const recentTransactions = [
     asset: 'TaskFlow SaaS',
     amount: 125000,
     status: 'completed',
-    date: '2024-01-20',
+    date: '2025-01-20',
   },
   {
     id: '2',
@@ -40,7 +40,7 @@ const recentTransactions = [
     asset: 'E-commerce Store',
     amount: 89000,
     status: 'escrow',
-    date: '2024-01-19',
+    date: '2025-01-19',
   },
   {
     id: '3',
@@ -49,7 +49,7 @@ const recentTransactions = [
     asset: 'Mobile App',
     amount: 67000,
     status: 'pending',
-    date: '2024-01-18',
+    date: '2025-01-18',
   },
 ];
 
@@ -103,7 +103,7 @@ const recentUsers = [
     email: 'alex@example.com',
     type: 'seller',
     verified: true,
-    joinDate: '2024-01-20',
+    joinDate: '2025-01-20',
     avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=50',
   },
   {
@@ -112,7 +112,7 @@ const recentUsers = [
     email: 'maria@example.com',
     type: 'buyer',
     verified: false,
-    joinDate: '2024-01-19',
+    joinDate: '2025-01-19',
     avatar: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=50',
   },
   {
@@ -121,7 +121,7 @@ const recentUsers = [
     email: 'robert@example.com',
     type: 'both',
     verified: true,
-    joinDate: '2024-01-18',
+    joinDate: '2025-01-18',
     avatar: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=50',
   },
 ];
@@ -181,7 +181,7 @@ export function AdminDashboard() {
                 <p className="text-2xl font-bold text-slate-900">{platformStats.activeListings.toLocaleString()}</p>
                 <p className="text-xs text-blue-600 flex items-center mt-1">
                   <Globe className="h-3 w-3 mr-1" />
-                  Online na plataforma
+                  Ativas na plataforma
                 </p>
               </div>
               <div className="p-3 bg-emerald-100 rounded-full">
@@ -199,7 +199,7 @@ export function AdminDashboard() {
                 <p className="text-2xl font-bold text-slate-900">€{(platformStats.totalVolume / 1000000).toFixed(1)}M</p>
                 <p className="text-xs text-purple-600 flex items-center mt-1">
                   <DollarSign className="h-3 w-3 mr-1" />
-                  Total histórico
+                  Total acumulado
                 </p>
               </div>
               <div className="p-3 bg-purple-100 rounded-full">
@@ -234,7 +234,7 @@ export function AdminDashboard() {
           <TabsTrigger value="users">Utilizadores</TabsTrigger>
           <TabsTrigger value="transactions">Transações</TabsTrigger>
           <TabsTrigger value="fraud">Deteção de Fraude</TabsTrigger>
-          <TabsTrigger value="analytics">Análise</TabsTrigger>
+          <TabsTrigger value="analytics">Análises</TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview" className="space-y-6">
@@ -274,7 +274,7 @@ export function AdminDashboard() {
                   <CheckCircle className="h-5 w-5 text-emerald-600" />
                   <div className="flex-1">
                     <p className="text-sm font-medium">Transação concluída</p>
-                    <p className="text-xs text-slate-600">TaskFlow SaaS - €125,000</p>
+                    <p className="text-xs text-slate-600">TaskFlow SaaS - €125.000</p>
                   </div>
                   <span className="text-xs text-slate-500">há 2h</span>
                 </div>
@@ -289,7 +289,7 @@ export function AdminDashboard() {
                 <div className="flex items-center space-x-3 p-3 bg-amber-50 rounded-lg">
                   <AlertTriangle className="h-5 w-5 text-amber-600" />
                   <div className="flex-1">
-                    <p className="text-sm font-medium">Alerta de fraude</p>
+                    <p className="text-sm font-medium">Alerta de fraude acionado</p>
                     <p className="text-xs text-slate-600">Listagem suspeita detetada</p>
                   </div>
                   <span className="text-xs text-slate-500">há 6h</span>
@@ -303,26 +303,26 @@ export function AdminDashboard() {
             <CardHeader>
               <CardTitle>Saúde da Plataforma</CardTitle>
               <CardDescription>
-                Indicadores-chave de desempenho e estado do sistema
+                Indicadores chave de desempenho e estado do sistema
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-emerald-600 mb-2">{platformStats.conversionRate}%</div>
-                  <p className="text-sm text-slate-600 mb-2">Taxa de Conversão</p>
+                  <p className="text-sm text-slate-600 mb-2">Taxa de conversão</p>
                   <Progress value={platformStats.conversionRate * 10} className="h-2" />
                   <p className="text-xs text-slate-500 mt-1">Acima da média do setor</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">98.9%</div>
-                  <p className="text-sm text-slate-600 mb-2">Disponibilidade do Sistema</p>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">98,9%</div>
+                  <p className="text-sm text-slate-600 mb-2">Disponibilidade do sistema</p>
                   <Progress value={98.9} className="h-2" />
                   <p className="text-xs text-slate-500 mt-1">Últimos 30 dias</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-600 mb-2">4.8/5</div>
-                  <p className="text-sm text-slate-600 mb-2">Satisfação dos Utilizadores</p>
+                  <div className="text-3xl font-bold text-purple-600 mb-2">4,8/5</div>
+                  <p className="text-sm text-slate-600 mb-2">Satisfação dos utilizadores</p>
                   <Progress value={96} className="h-2" />
                   <p className="text-xs text-slate-500 mt-1">Com base em 1.247 avaliações</p>
                 </div>
@@ -431,7 +431,7 @@ export function AdminDashboard() {
                           transaction.status === 'completed' ? 'default' :
                           transaction.status === 'escrow' ? 'secondary' : 'outline'
                         }>
-                          {transaction.status === 'completed' ? 'Concluída' : transaction.status === 'escrow' ? 'Em Escrow' : 'Pendente'}
+                          {transaction.status === 'completed' ? 'concluída' : transaction.status === 'escrow' ? 'em caução' : 'pendente'}
                         </Badge>
                       </div>
                       <div className="text-sm text-slate-600">
@@ -443,7 +443,7 @@ export function AdminDashboard() {
                     </div>
                     <div className="text-right">
                       <div className="text-lg font-semibold">
-                        €{transaction.amount.toLocaleString()}
+                        €{transaction.amount.toLocaleString('pt-PT')}
                       </div>
                       <Button size="sm" variant="outline">
                         Ver Detalhes
@@ -481,7 +481,7 @@ export function AdminDashboard() {
                         <span className="font-medium capitalize">{alert.type.replace('_', ' ')}</span>
                       </div>
                       <Badge variant={alert.severity === 'high' ? 'destructive' : 'secondary'}>
-                        {alert.severity === 'high' ? 'Prioridade Alta' : 'Prioridade Média'}
+                        {alert.severity === 'high' ? 'prioridade alta' : 'prioridade média'}
                       </Badge>
                     </div>
                     <p className="text-sm text-slate-700 mb-2">{alert.description}</p>

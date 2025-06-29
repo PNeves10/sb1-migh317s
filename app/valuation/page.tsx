@@ -144,43 +144,43 @@ export default function ValuationPage() {
   const totalSteps = 4
 
   const industries = [
-    "Tecnologia",
-    "Saúde",
-    "Finanças",
-    "Retalho",
-    "Indústria Transformadora",
-    "Imobiliário",
-    "Educação",
-    "Alimentação & Bebidas",
-    "Transporte",
-    "Energia",
-    "Media & Entretenimento",
-    "Serviços Profissionais",
-    "Outro"
+    "Technology",
+    "Healthcare",
+    "Finance",
+    "Retail",
+    "Manufacturing",
+    "Real Estate",
+    "Education",
+    "Food & Beverage",
+    "Transportation",
+    "Energy",
+    "Media & Entertainment",
+    "Professional Services",
+    "Other"
   ]
 
   const businessModels = [
     "B2B SaaS",
     "B2C E-commerce",
     "Marketplace",
-    "Subscrição",
+    "Subscription",
     "Freemium",
-    "Publicidade",
-    "Baseado em Transações",
-    "Licenciamento",
-    "Consultoria",
-    "Vendas de Produto",
-    "Outro"
+    "Advertising",
+    "Transaction-based",
+    "Licensing",
+    "Consulting",
+    "Product Sales",
+    "Other"
   ]
 
   const stages = [
-    "Fase de Ideia",
-    "MVP/Protótipo",
-    "Receita Inicial",
-    "Fase de Crescimento",
-    "Maturidade/Estabelecido",
-    "Expansão",
-    "Preparação para Saída"
+    "Idea Stage",
+    "MVP/Prototype",
+    "Early Revenue",
+    "Growth Stage",
+    "Mature/Established",
+    "Expansion",
+    "Exit Preparation"
   ]
 
   const calculateValuation = async () => {
@@ -214,7 +214,7 @@ export default function ValuationPage() {
     const result: ValuationResult = {
       estimatedValue,
       confidence,
-      method: "Método Híbrido (Ativo + Mercado + Rendimento)",
+      method: "Hybrid Approach (Asset + Market + Income)",
       breakdown: {
         assetBased,
         marketBased,
@@ -231,42 +231,39 @@ export default function ValuationPage() {
     setIsCalculating(false)
     setShowResults(true)
 
-    toast(
-      <>
-        <strong>Avaliação Concluída</strong>
-        <div>A avaliação da sua empresa foi calculada com êxito.</div>
-      </>
-    )
+    toast("Valuation Complete", {
+      description: "Your business valuation has been calculated successfully."
+    })
   }
 
   const getIndustryMultiplier = (industry: string): number => {
     const multipliers: { [key: string]: number } = {
-      "Tecnologia": 8,
-      "Saúde": 6,
-      "Finanças": 4,
-      "Retalho": 2,
-      "Indústria Transformadora": 3,
-      "Imobiliário": 5,
-      "Educação": 4,
-      "Alimentação & Bebidas": 2.5,
-      "Transporte": 3,
-      "Energia": 4,
-      "Media & Entretenimento": 5,
-      "Serviços Profissionais": 3.5,
-      "Outro": 3
+      "Technology": 8,
+      "Healthcare": 6,
+      "Finance": 4,
+      "Retail": 2,
+      "Manufacturing": 3,
+      "Real Estate": 5,
+      "Education": 4,
+      "Food & Beverage": 2.5,
+      "Transportation": 3,
+      "Energy": 4,
+      "Media & Entertainment": 5,
+      "Professional Services": 3.5,
+      "Other": 3
     }
     return multipliers[industry] || 3
   }
 
   const getStageFactor = (stage: string): number => {
     const factors: { [key: string]: number } = {
-      "Fase de Ideia": 0.5,
-      "MVP/Protótipo": 0.7,
-      "Receita Inicial": 0.9,
-      "Fase de Crescimento": 1.2,
-      "Maturidade/Estabelecido": 1.0,
-      "Expansão": 1.1,
-      "Preparação para Saída": 0.95
+      "Idea Stage": 0.5,
+      "MVP/Prototype": 0.7,
+      "Early Revenue": 0.9,
+      "Growth Stage": 1.2,
+      "Mature/Established": 1.0,
+      "Expansion": 1.1,
+      "Exit Preparation": 0.95
     }
     return factors[stage] || 1
   }
@@ -281,41 +278,41 @@ export default function ValuationPage() {
 
   const getPositiveFactors = (): string[] => {
     const factors = []
-    if (valuationData.growth > 20) factors.push("Elevada taxa de crescimento")
-    if (valuationData.revenue > 1000000) factors.push("Forte base de receitas")
-    if (valuationData.employees > 50) factors.push("Equipa estabelecida")
-    if (valuationData.cashFlow > 0) factors.push("Cash flow positivo")
-    if (valuationData.competition < 5) factors.push("Baixa concorrência")
-    if (valuationData.uniqueValue.length > 50) factors.push("Proposta de valor clara")
+    if (valuationData.growth > 20) factors.push("High growth rate")
+    if (valuationData.revenue > 1000000) factors.push("Strong revenue base")
+    if (valuationData.employees > 50) factors.push("Established team")
+    if (valuationData.cashFlow > 0) factors.push("Positive cash flow")
+    if (valuationData.competition < 5) factors.push("Low competition")
+    if (valuationData.uniqueValue.length > 50) factors.push("Clear value proposition")
     return factors
   }
 
   const getNegativeFactors = (): string[] => {
     const factors = []
-    if (valuationData.growth < 5) factors.push("Baixa taxa de crescimento")
-    if (valuationData.revenue < 100000) factors.push("Receitas limitadas")
-    if (valuationData.cashFlow < 0) factors.push("Cash flow negativo")
-    if (valuationData.competition > 7) factors.push("Elevada concorrência")
-    if (valuationData.liabilities > valuationData.assets) factors.push("Elevado peso da dívida")
+    if (valuationData.growth < 5) factors.push("Low growth rate")
+    if (valuationData.revenue < 100000) factors.push("Limited revenue")
+    if (valuationData.cashFlow < 0) factors.push("Negative cash flow")
+    if (valuationData.competition > 7) factors.push("High competition")
+    if (valuationData.liabilities > valuationData.assets) factors.push("High debt burden")
     return factors
   }
 
   const getRecommendations = (): string[] => {
     const recommendations = []
     if (valuationData.growth < 10) {
-      recommendations.push("Concentrar-se na aceleração do crescimento através do marketing e do desenvolvimento de produtos")
+      recommendations.push("Focus on accelerating growth through marketing and product development")
     }
     if (valuationData.cashFlow < 0) {
-      recommendations.push("Melhorar a gestão do fluxo de caixa e reduzir os custos operacionais")
+      recommendations.push("Improve cash flow management and reduce operational costs")
     }
     if (valuationData.competition > 7) {
-      recommendations.push("Reforçar o posicionamento competitivo e a proposta de valor único")
+      recommendations.push("Strengthen competitive positioning and unique value proposition")
     }
     if (valuationData.employees < 10) {
-      recommendations.push("Considerar a contratação estratégica para apoiar o crescimento")
+      recommendations.push("Consider strategic hiring to support growth")
     }
-    recommendations.push("Auditorias financeiras regulares para manter uma avaliação exacta")
-    recommendations.push("Documentar toda a propriedade intelectual e os principais processos empresariais.")
+    recommendations.push("Regular financial audits to maintain accurate valuation")
+    recommendations.push("Document all intellectual property and key business processes")
     return recommendations
   }
 
@@ -395,12 +392,9 @@ export default function ValuationPage() {
     linkElement.setAttribute('download', exportFileDefaultName)
     linkElement.click()
 
-    toast(
-      <>
-        <strong>Exportação completa</strong>
-        <div>O relatório de avaliação foi descarregado.</div>
-      </>
-    )
+    toast("Export Complete", {
+      description: "Valuation report has been downloaded."
+    })
   }
 
   if (showResults && valuationResult) {
@@ -424,7 +418,7 @@ export default function ValuationPage() {
                 <CheckCircle className="w-8 h-8 text-green-600" />
               </motion.div>
               <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                Avaliação Concluída
+                Valuation Complete
               </h1>
               <p className="text-xl text-gray-600">
                 {valuationData.businessName}
@@ -436,7 +430,7 @@ export default function ValuationPage() {
               <CardContent className="p-8">
                 <div className="text-center">
                   <div className="text-sm font-medium opacity-90 mb-2">
-                    Valor Estimado do Negócio
+                    Estimated Business Value
                   </div>
                   <div className="text-5xl font-bold mb-4">
                     {formatCurrency(valuationResult.estimatedValue)}
@@ -444,7 +438,7 @@ export default function ValuationPage() {
                   <div className="flex items-center justify-center gap-4">
                     <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
                       <Gauge className="w-4 h-4 mr-1" />
-                      {valuationResult.confidence.toFixed(0)}% Confiança
+                      {valuationResult.confidence.toFixed(0)}% Confidence
                     </Badge>
                     <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
                       <Calculator className="w-4 h-4 mr-1" />
@@ -462,25 +456,25 @@ export default function ValuationPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <PieChart className="w-5 h-5" />
-                    Detalhe da Avaliação
+                    Valuation Breakdown
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                      <span className="font-medium">Baseado em Ativos (20%)</span>
+                      <span className="font-medium">Asset-Based (20%)</span>
                       <span className="font-bold text-blue-600">
                         {formatCurrency(valuationResult.breakdown.assetBased)}
                       </span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                      <span className="font-medium">Baseado no Mercado (50%)</span>
+                      <span className="font-medium">Market-Based (50%)</span>
                       <span className="font-bold text-green-600">
                         {formatCurrency(valuationResult.breakdown.marketBased)}
                       </span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
-                      <span className="font-medium">Baseado em Rendimentos (30%)</span>
+                      <span className="font-medium">Income-Based (30%)</span>
                       <span className="font-bold text-purple-600">
                         {formatCurrency(valuationResult.breakdown.incomeBased)}
                       </span>
@@ -494,14 +488,14 @@ export default function ValuationPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Target className="w-5 h-5" />
-                    Fatores-Chave
+                    Key Factors
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <Tabs defaultValue="positive" className="w-full">
                     <TabsList className="grid w-full grid-cols-2">
-                      <TabsTrigger value="positive">Positivos</TabsTrigger>
-                      <TabsTrigger value="negative">Negativos</TabsTrigger>
+                      <TabsTrigger value="positive">Positive</TabsTrigger>
+                      <TabsTrigger value="negative">Negative</TabsTrigger>
                     </TabsList>
                     <TabsContent value="positive" className="space-y-2">
                       {valuationResult.factors.positive.map((factor, index) => (
@@ -511,7 +505,7 @@ export default function ValuationPage() {
                         </div>
                       ))}
                       {valuationResult.factors.positive.length === 0 && (
-                        <p className="text-sm text-gray-500 italic">Nenhum fator positivo significativo identificado</p>
+                        <p className="text-sm text-gray-500 italic">No significant positive factors identified</p>
                       )}
                     </TabsContent>
                     <TabsContent value="negative" className="space-y-2">
@@ -522,7 +516,7 @@ export default function ValuationPage() {
                         </div>
                       ))}
                       {valuationResult.factors.negative.length === 0 && (
-                        <p className="text-sm text-gray-500 italic">Nenhum fator negativo significativo identificado</p>
+                        <p className="text-sm text-gray-500 italic">No significant negative factors identified</p>
                       )}
                     </TabsContent>
                   </Tabs>
@@ -535,10 +529,10 @@ export default function ValuationPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Lightbulb className="w-5 h-5" />
-                  Recomendações
+                  Recommendations
                 </CardTitle>
                 <CardDescription>
-                  Sugestões estratégicas para melhorar o valor do seu negócio
+                  Strategic suggestions to improve your business value
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -559,15 +553,15 @@ export default function ValuationPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <Button onClick={exportResults} className="bg-green-600 hover:bg-green-700">
                 <Download className="w-4 h-4 mr-2" />
-                Exportar Relatório
+                Export Report
               </Button>
               <Button variant="outline" onClick={() => window.print()}>
                 <FileText className="w-4 h-4 mr-2" />
-                Imprimir Relatório
+                Print Report
               </Button>
               <Button variant="outline" onClick={resetValuation}>
                 <RefreshCw className="w-4 h-4 mr-2" />
-                Nova Avaliação
+                New Valuation
               </Button>
             </div>
           </motion.div>
@@ -592,17 +586,17 @@ export default function ValuationPage() {
               <Calculator className="w-8 h-8 text-blue-600" />
             </motion.div>
             <h1 className="text-4xl font-bold text-gray-900 mb-2">
-              Ferramenta de Avaliação de Negócios
+              Business Valuation Tool
             </h1>
             <p className="text-xl text-gray-600 mb-6">
-              Obtenha uma estimativa precisa do valor do seu negócio com a nossa análise potenciada por IA
+              Get an accurate estimate of your business value using our AI-powered analysis
             </p>
             
             {/* Progress Bar */}
             <div className="max-w-md mx-auto">
               <div className="flex justify-between text-sm text-gray-500 mb-2">
-                <span>Passo {currentStep} de {totalSteps}</span>
-                <span>{Math.round((currentStep / totalSteps) * 100)}% Concluído</span>
+                <span>Step {currentStep} of {totalSteps}</span>
+                <span>{Math.round((currentStep / totalSteps) * 100)}% Complete</span>
               </div>
               <Progress value={(currentStep / totalSteps) * 100} className="h-2" />
             </div>
@@ -623,32 +617,32 @@ export default function ValuationPage() {
                   >
                     <div className="text-center mb-6">
                       <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                        Informação Básica
+                        Basic Information
                       </h2>
                       <p className="text-gray-600">
-                        Fale-nos sobre os fundamentos do seu negócio
+                        Tell us about your business fundamentals
                       </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="businessName">Nome do Negócio</Label>
+                        <Label htmlFor="businessName">Business Name</Label>
                         <Input
                           id="businessName"
-                          placeholder="Insira o nome do seu negócio"
+                          placeholder="Enter your business name"
                           value={valuationData.businessName}
                           onChange={(e) => handleInputChange('businessName', e.target.value)}
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="industry">Setor</Label>
+                        <Label htmlFor="industry">Industry</Label>
                         <Select
                           value={valuationData.industry}
                           onValueChange={(value) => handleInputChange('industry', value)}
                         >
                           <SelectTrigger>
-                            <SelectValue placeholder="Selecione o setor" />
+                            <SelectValue placeholder="Select industry" />
                           </SelectTrigger>
                           <SelectContent>
                             {industries.map((industry) => (
@@ -661,13 +655,13 @@ export default function ValuationPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="businessModel">Modelo de Negócio</Label>
+                        <Label htmlFor="businessModel">Business Model</Label>
                         <Select
                           value={valuationData.businessModel}
                           onValueChange={(value) => handleInputChange('businessModel', value)}
                         >
                           <SelectTrigger>
-                            <SelectValue placeholder="Selecione o modelo de negócio" />
+                            <SelectValue placeholder="Select business model" />
                           </SelectTrigger>
                           <SelectContent>
                             {businessModels.map((model) => (
@@ -680,13 +674,13 @@ export default function ValuationPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="stage">Fase do Negócio</Label>
+                        <Label htmlFor="stage">Business Stage</Label>
                         <Select
                           value={valuationData.stage}
                           onValueChange={(value) => handleInputChange('stage', value)}
                         >
                           <SelectTrigger>
-                            <SelectValue placeholder="Selecione a fase do negócio" />
+                            <SelectValue placeholder="Select business stage" />
                           </SelectTrigger>
                           <SelectContent>
                             {stages.map((stage) => (
@@ -699,17 +693,17 @@ export default function ValuationPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="location">Localização</Label>
+                        <Label htmlFor="location">Location</Label>
                         <Input
                           id="location"
-                          placeholder="Cidade, País"
+                          placeholder="City, Country"
                           value={valuationData.location}
                           onChange={(e) => handleInputChange('location', e.target.value)}
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="employees">Número de Colaboradores</Label>
+                        <Label htmlFor="employees">Number of Employees</Label>
                         <Input
                           id="employees"
                           type="number"
@@ -733,16 +727,16 @@ export default function ValuationPage() {
                   >
                     <div className="text-center mb-6">
                       <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                        Informação Financeira
+                        Financial Information
                       </h2>
                       <p className="text-gray-600">
-                        Indique os principais indicadores financeiros
+                        Provide your key financial metrics
                       </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="revenue">Receita Anual (€)</Label>
+                        <Label htmlFor="revenue">Annual Revenue ($)</Label>
                         <Input
                           id="revenue"
                           type="number"
@@ -753,7 +747,7 @@ export default function ValuationPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="growth">Taxa de Crescimento (%)</Label>
+                        <Label htmlFor="growth">Growth Rate (%)</Label>
                         <Input
                           id="growth"
                           type="number"
@@ -764,7 +758,7 @@ export default function ValuationPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="cashFlow">Cash Flow Mensal (€)</Label>
+                        <Label htmlFor="cashFlow">Monthly Cash Flow ($)</Label>
                         <Input
                           id="cashFlow"
                           type="number"
@@ -775,7 +769,7 @@ export default function ValuationPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="assets">Total de Ativos (€)</Label>
+                        <Label htmlFor="assets">Total Assets ($)</Label>
                         <Input
                           id="assets"
                           type="number"
@@ -786,7 +780,7 @@ export default function ValuationPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="liabilities">Total de Passivos (€)</Label>
+                        <Label htmlFor="liabilities">Total Liabilities ($)</Label>
                         <Input
                           id="liabilities"
                           type="number"
@@ -797,7 +791,7 @@ export default function ValuationPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="marketSize">Tamanho do Mercado (€)</Label>
+                        <Label htmlFor="marketSize">Market Size ($)</Label>
                         <Input
                           id="marketSize"
                           type="number"
@@ -821,16 +815,16 @@ export default function ValuationPage() {
                   >
                     <div className="text-center mb-6">
                       <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                        Análise de Mercado
+                        Market Analysis
                       </h2>
                       <p className="text-gray-600">
-                        Ajude-nos a perceber o seu contexto competitivo
+                        Help us understand your competitive landscape
                       </p>
                     </div>
 
                     <div className="space-y-6">
                       <div className="space-y-3">
-                        <Label>Nível de Concorrência</Label>
+                        <Label>Competition Level</Label>
                         <div className="px-4">
                           <Slider
                             value={[valuationData.competition]}
@@ -841,18 +835,18 @@ export default function ValuationPage() {
                             className="w-full"
                           />
                           <div className="flex justify-between text-sm text-gray-500 mt-2">
-                            <span>Pouca Concorrência</span>
-                            <span className="font-medium">Nível: {valuationData.competition}</span>
-                            <span>Muita Concorrência</span>
+                            <span>Low Competition</span>
+                            <span className="font-medium">Level: {valuationData.competition}</span>
+                            <span>High Competition</span>
                           </div>
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="uniqueValue">Proposta de Valor Única</Label>
+                        <Label htmlFor="uniqueValue">Unique Value Proposition</Label>
                         <Textarea
                           id="uniqueValue"
-                          placeholder="Descreva o que torna o seu negócio único e competitivo..."
+                          placeholder="Describe what makes your business unique and competitive..."
                           value={valuationData.uniqueValue}
                           onChange={(e) => handleInputChange('uniqueValue', e.target.value)}
                           rows={4}
@@ -860,10 +854,10 @@ export default function ValuationPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="opportunities">Principais Oportunidades</Label>
+                        <Label htmlFor="opportunities">Key Opportunities</Label>
                         <Textarea
                           id="opportunities"
-                          placeholder="Descreva as principais oportunidades de crescimento e tendências de mercado..."
+                          placeholder="Describe major growth opportunities and market trends..."
                           value={valuationData.opportunities}
                           onChange={(e) => handleInputChange('opportunities', e.target.value)}
                           rows={4}
@@ -884,19 +878,19 @@ export default function ValuationPage() {
                   >
                     <div className="text-center mb-6">
                       <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                        Avaliação de Risco
+                        Risk Assessment
                       </h2>
                       <p className="text-gray-600">
-                        Identifique riscos e desafios potenciais
+                        Identify potential risks and challenges
                       </p>
                     </div>
 
                     <div className="space-y-6">
                       <div className="space-y-2">
-                        <Label htmlFor="risks">Principais Riscos & Desafios</Label>
+                        <Label htmlFor="risks">Key Risks & Challenges</Label>
                         <Textarea
                           id="risks"
-                          placeholder="Descreva os principais riscos, dependências e desafios potenciais..."
+                          placeholder="Describe major risks, dependencies, and potential challenges..."
                           value={valuationData.risks}
                           onChange={(e) => handleInputChange('risks', e.target.value)}
                           rows={6}
@@ -906,26 +900,26 @@ export default function ValuationPage() {
                       <Alert>
                         <Info className="h-4 w-4" />
                         <AlertDescription>
-                          Seja honesto sobre riscos e desafios. Isto ajuda a fornecer uma avaliação mais precisa e melhores recomendações.
+                          Be honest about risks and challenges. This helps provide a more accurate valuation and better recommendations.
                         </AlertDescription>
                       </Alert>
 
                       <div className="bg-blue-50 p-6 rounded-lg">
-                        <h3 className="font-semibold text-blue-900 mb-3">Pronto para Calcular?</h3>
+                        <h3 className="font-semibold text-blue-900 mb-3">Ready to Calculate?</h3>
                         <p className="text-blue-800 mb-4">
-                          Vamos analisar o seu negócio utilizando vários métodos de avaliação, incluindo abordagens baseadas em ativos, mercado e rendimentos.
+                          We'll analyze your business using multiple valuation methods including asset-based, market-based, and income-based approaches.
                         </p>
                         <div className="flex items-center gap-2 text-sm text-blue-700">
                           <CheckCircle className="w-4 h-4" />
-                          <span>Análise potenciada por IA</span>
+                          <span>AI-powered analysis</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-blue-700">
                           <CheckCircle className="w-4 h-4" />
-                          <span>Benchmarking do setor</span>
+                          <span>Industry benchmarking</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-blue-700">
                           <CheckCircle className="w-4 h-4" />
-                          <span>Recomendações detalhadas</span>
+                          <span>Detailed recommendations</span>
                         </div>
                       </div>
                     </div>
@@ -942,7 +936,7 @@ export default function ValuationPage() {
                   className="flex items-center gap-2"
                 >
                   <ArrowLeft className="w-4 h-4" />
-                  Anterior
+                  Previous
                 </Button>
 
                 {currentStep < totalSteps ? (
@@ -950,7 +944,7 @@ export default function ValuationPage() {
                     onClick={nextStep}
                     className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
                   >
-                    Seguinte
+                    Next
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 ) : (
@@ -962,12 +956,12 @@ export default function ValuationPage() {
                     {isCalculating ? (
                       <>
                         <RefreshCw className="w-4 h-4 animate-spin" />
-                        A calcular...
+                        Calculating...
                       </>
                     ) : (
                       <>
                         <Calculator className="w-4 h-4" />
-                        Calcular Avaliação
+                        Calculate Valuation
                       </>
                     )}
                   </Button>
@@ -992,9 +986,9 @@ export default function ValuationPage() {
                   >
                     <Brain className="w-8 h-8 text-blue-600" />
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-2">A Analisar o Seu Negócio</h3>
+                  <h3 className="text-xl font-semibold mb-2">Analyzing Your Business</h3>
                   <p className="text-gray-600 mb-4">
-                    A nossa IA está a processar os seus dados e a calcular a avaliação...
+                    Our AI is processing your data and calculating the valuation...
                   </p>
                   <Progress value={66} className="h-2" />
                 </div>

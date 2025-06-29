@@ -15,8 +15,8 @@ export function Footer() {
               <span className="text-xl font-bold text-white">AIQuira</span>
             </div>
             <p className="text-sm text-slate-400">
-              A principal plataforma para M&A digital.
-              Potenciamos negócios com avaliações por IA e matchmaking inteligente.
+              A principal plataforma para M&A digitais.<br/>
+              A potenciar negócios com avaliações por IA e matchmaking inteligente.
             </p>
             <div className="flex space-x-4">
               <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white">
@@ -40,8 +40,8 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/marketplace" className="hover:text-white transition-colors">Marketplace</Link></li>
               <li><Link href="/valuation" className="hover:text-white transition-colors">Avaliação IA</Link></li>
-              <li><Link href="/dashboard" className="hover:text-white transition-colors">Painel</Link></li>
-              <li><Link href="/analytics" className="hover:text-white transition-colors">Análise</Link></li>
+              <li><Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link></li>
+              <li><Link href="/analytics" className="hover:text-white transition-colors">Analytics</Link></li>
             </ul>
           </div>
 
@@ -51,7 +51,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li><Link href="/pricing" className="hover:text-white transition-colors">Preços</Link></li>
-              <li><Link href="/how-to-use" className="hover:text-white transition-colors">Como usar</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">Sobre</Link></li>
               <li><Link href="/help" className="hover:text-white transition-colors">Centro de Ajuda</Link></li>
             </ul>
           </div>

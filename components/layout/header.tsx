@@ -56,29 +56,29 @@ export function Header() {
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="bg-transparent">Plataforma</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="bg-transparent">Platform</NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="grid gap-3 p-6 w-[400px]">
                         <div className="grid grid-cols-2 gap-4">
                           <Link href="/dashboard" className="block p-3 rounded-lg hover:bg-muted transition-colors">
                             <TrendingUp className="h-5 w-5 mb-2 text-blue-600" />
-                            <div className="font-medium">Painel</div>
-                            <div className="text-sm text-muted-foreground">Ver as suas análises</div>
+                            <div className="font-medium">Dashboard</div>
+                            <div className="text-sm text-muted-foreground">View your analytics</div>
                           </Link>
                           <Link href="/marketplace" className="block p-3 rounded-lg hover:bg-muted transition-colors">
                             <Search className="h-5 w-5 mb-2 text-emerald-600" />
-                            <div className="font-medium">Mercado</div>
-                            <div className="text-sm text-muted-foreground">Explorar ativos</div>
+                            <div className="font-medium">Marketplace</div>
+                            <div className="text-sm text-muted-foreground">Browse assets</div>
                           </Link>
                           <Link href="/valuation" className="block p-3 rounded-lg hover:bg-muted transition-colors">
                             <DollarSign className="h-5 w-5 mb-2 text-amber-600" />
-                            <div className="font-medium">Avaliação IA</div>
-                            <div className="text-sm text-muted-foreground">Obter valor do ativo</div>
+                            <div className="font-medium">AI Valuation</div>
+                            <div className="text-sm text-muted-foreground">Get asset value</div>
                           </Link>
                           <Link href="/messages" className="block p-3 rounded-lg hover:bg-muted transition-colors">
                             <MessageSquare className="h-5 w-5 mb-2 text-purple-600" />
-                            <div className="font-medium">Mensagens</div>
-                            <div className="text-sm text-muted-foreground">Conversar com utilizadores</div>
+                            <div className="font-medium">Messages</div>
+                            <div className="text-sm text-muted-foreground">Chat with users</div>
                           </Link>
                         </div>
                       </div>
@@ -151,19 +151,19 @@ export function Header() {
                   <DropdownMenuItem asChild>
                     <Link href="/dashboard">
                       <User className="mr-2 h-4 w-4" />
-                      Painel
+                      Dashboard
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href="/settings">
                       <Settings className="mr-2 h-4 w-4" />
-                      Definições
+                      Settings
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout} className="text-red-600">
                     <LogOut className="mr-2 h-4 w-4" />
-                    Terminar sessão
+                    Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -195,7 +195,7 @@ export function Header() {
                   Avaliação IA
                 </Link>
                 <Link href="/how-it-works" className="text-lg font-medium hover:text-blue-600 transition-colors">
-                  Como funciona
+                  Como Funciona
                 </Link>
                 <Link href="/blog" className="text-lg font-medium hover:text-blue-600 transition-colors">
                   Recursos
