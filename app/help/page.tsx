@@ -14,7 +14,7 @@ import {
   Search, HelpCircle, Book, MessageCircle, Video, FileText,
   Users, Shield, DollarSign, TrendingUp, Zap, Phone, Mail,
   Clock, CheckCircle, ArrowRight, ExternalLink, Download,
-  PlayCircle, Star, ThumbsUp, ThumbsDown, Share2
+  PlayCircle, Star, ThumbsUp, ThumbsDown, Share2, Eye
 } from 'lucide-react';
 import Link from 'next/link';
 
