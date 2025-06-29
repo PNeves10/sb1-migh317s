@@ -185,8 +185,6 @@ export default function HowToUsePage() {
   const [activeTab, setActiveTab] = useState('buyer');
   const [selectedStep, setSelectedStep] = useState(0);
 
-  const currentUserType = userTypes.find(type => type.id === activeTab);
-
   return (
     <div className="min-h-screen bg-slate-50">
       <Header />
