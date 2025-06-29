@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { useSession } from "next-auth/react"
+import { useAuth } from "@/contexts/auth-context"
 import { useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -49,7 +49,7 @@ interface NotificationSystemProps {
 }
 
 export function NotificationSystem({ isOpen, onClose }: NotificationSystemProps) {
-  const { data: session } = useSession()
+  const { user, isAuthenticated } = useAuth()
   const { toast } = useToast()
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -67,10 +67,10 @@ export function NotificationSystem({ isOpen, onClose }: NotificationSystemProps)
   const audioRef = useRef<HTMLAudioElement>(null)
 
   useEffect(() => {
-    if (isOpen && session) {
+    if (isOpen && isAuthenticated) {
       fetchNotifications()
     }
-  }, [isOpen, session])
+  }, [isOpen, isAuthenticated])
 
   // Auto refresh
   useEffect(() => {

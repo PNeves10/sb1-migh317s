@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
-import { useSession } from "next-auth/react"
+import { useAuth } from "@/contexts/auth-context"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -82,7 +82,7 @@ interface FavoriteAsset {
 }
 
 export default function FavoritesPage() {
-  const { data: session } = useSession()
+  const { user, isAuthenticated } = useAuth()
   const { toast } = useToast()
   const [favorites, setFavorites] = useState<FavoriteAsset[]>([])
   const [searchTerm, setSearchTerm] = useState("")
@@ -227,7 +227,7 @@ export default function FavoritesPage() {
 
   useEffect(() => {
     const fetchFavorites = async () => {
-      if (!session) return
+      if (!isAuthenticated) return
 
       setIsLoading(true)
       await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -236,7 +236,7 @@ export default function FavoritesPage() {
     }
 
     fetchFavorites()
-  }, [session])
+  }, [isAuthenticated])
 
   // Memoized filtered and sorted favorites
   const filteredFavorites = useMemo(() => {
@@ -403,7 +403,7 @@ export default function FavoritesPage() {
     return "text-red-600"
   }
 
-  if (!session) {
+  if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-slate-50">
         <Header />
