@@ -1745,7 +1745,7 @@ export function AssetDetailsClient() {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Price & Actions */}
-              <Card className="sticky top-6">
+              <Card className="top-6">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div>
