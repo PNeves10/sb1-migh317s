@@ -78,7 +78,7 @@ export function Footer() {
         <div className="border-t border-slate-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-slate-400">
-              © 2024 AIQuira. All rights reserved.
+              © 2025 AIQuira. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm text-slate-400 mt-4 md:mt-0">
               <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
