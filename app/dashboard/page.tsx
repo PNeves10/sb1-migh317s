@@ -20,7 +20,7 @@ import {
   Target, Clock, Award, Briefcase, Activity, Bell, Settings,
   RefreshCw, Download, Share2, Filter, Search, MoreVertical,
   CheckCircle2, AlertTriangle, Info, Sparkles, Rocket, Shield,
-  LineChart, PieChart, TrendingDown, Bookmark, Mail, Phone,
+  LineChart as LineChartIcon, PieChart, TrendingDown, Bookmark, Mail, Phone,
   MapPin, Building, Code, Smartphone, ShoppingCart, FileText,
   ExternalLink, Copy, Edit, Trash2, Archive, Send
 } from "lucide-react"
