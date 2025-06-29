@@ -1,26 +1,12 @@
-import { toast as sonnerToast } from 'sonner';
+"use client"
 
-interface ToastProps {
-  title?: string;
-  description?: string;
-  variant?: 'default' | 'destructive';
-  duration?: number;
+// Keeping this simple for now - you can expand with a proper toast system later
+import { toast as sonnerToast } from "sonner"
+
+export const useToast = () => {
+  return {
+    toast: sonnerToast,
+  }
 }
 
-export function useToast() {
-  const toast = ({ title, description, variant = 'default', duration = 4000 }: ToastProps) => {
-    if (variant === 'destructive') {
-      sonnerToast.error(title || 'Error', {
-        description,
-        duration,
-      });
-    } else {
-      sonnerToast.success(title || 'Success', {
-        description,
-        duration,
-      });
-    }
-  };
-
-  return { toast };
-}
+export { sonnerToast as toast }
