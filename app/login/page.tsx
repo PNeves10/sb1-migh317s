@@ -29,8 +29,15 @@ export default function LoginPage() {
   const [blockTimeLeft, setBlockTimeLeft] = useState(0);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [showDemo, setShowDemo] = useState(false);
-  const { login, isLoading: authLoading } = useAuth();
+  const { login, isLoading: authLoading, isAuthenticated } = useAuth();
   const router = useRouter();
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/dashboard');
+    }
+  }, [isAuthenticated, router]);
 
   // Password strength calculation
   useEffect(() => {
@@ -86,7 +93,10 @@ export default function LoginPage() {
       
       // Reset attempts on successful login
       setLoginAttempts(0);
-      router.push('/dashboard');
+      
+      // The redirect will happen automatically via the useEffect above
+      // when isAuthenticated becomes true
+      
     } catch (err) {
       const newAttempts = loginAttempts + 1;
       setLoginAttempts(newAttempts);
@@ -118,7 +128,7 @@ export default function LoginPage() {
       toast.success(`Logado como demo ${userType}!`, {
         description: 'Explore todas as funcionalidades da plataforma',
       });
-      router.push(userType === 'admin' ? '/dashboard' : '/dashboard');
+      // Redirect will happen automatically via useEffect
     } catch (err) {
       toast.error('Falha no login demo');
     } finally {
@@ -154,6 +164,15 @@ export default function LoginPage() {
     if (passwordStrength < 75) return 'Boa';
     return 'Forte';
   };
+
+  // Don't render if already authenticated (prevents flash)
+  if (isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center p-4 relative overflow-hidden">
