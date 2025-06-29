@@ -84,7 +84,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Check for stored auth data
     const storedUser = localStorage.getItem('aiquira_user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setUser(parsedUser);
+      } catch (error) {
+        console.error('Error parsing stored user:', error);
+        localStorage.removeItem('aiquira_user');
+      }
     }
     setIsLoading(false);
   }, []);
@@ -92,15 +98,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    const foundUser = mockUsers[email];
-    if (foundUser && password === 'demo123') {
-      setUser(foundUser);
-      localStorage.setItem('aiquira_user', JSON.stringify(foundUser));
-    } else {
-      throw new Error('Invalid credentials');
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const foundUser = mockUsers[email];
+      if (foundUser && password === 'demo123') {
+        setUser(foundUser);
+        localStorage.setItem('aiquira_user', JSON.stringify(foundUser));
+      } else {
+        throw new Error('Invalid credentials');
+      }
+    } catch (error) {
+      setIsLoading(false);
+      throw error;
     }
     
     setIsLoading(false);
@@ -109,21 +120,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const register = async (data: RegisterData) => {
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const newUser: User = {
+        id: Date.now().toString(),
+        email: data.email,
+        name: data.name,
+        userType: data.userType,
+        verified: false,
+        rating: 0,
+        joinedAt: new Date().toISOString().split('T')[0]
+      };
+      
+      setUser(newUser);
+      localStorage.setItem('aiquira_user', JSON.stringify(newUser));
+    } catch (error) {
+      setIsLoading(false);
+      throw error;
+    }
     
-    const newUser: User = {
-      id: Date.now().toString(),
-      email: data.email,
-      name: data.name,
-      userType: data.userType,
-      verified: false,
-      rating: 0,
-      joinedAt: new Date().toISOString().split('T')[0]
-    };
-    
-    setUser(newUser);
-    localStorage.setItem('aiquira_user', JSON.stringify(newUser));
     setIsLoading(false);
   };
 

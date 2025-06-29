@@ -35,7 +35,7 @@ export default function LoginPage() {
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      router.push('/dashboard');
+      router.replace('/dashboard');
     }
   }, [isAuthenticated, router]);
 
@@ -94,8 +94,7 @@ export default function LoginPage() {
       // Reset attempts on successful login
       setLoginAttempts(0);
       
-      // The redirect will happen automatically via the useEffect above
-      // when isAuthenticated becomes true
+      // Redirect will happen automatically via useEffect when isAuthenticated becomes true
       
     } catch (err) {
       const newAttempts = loginAttempts + 1;
